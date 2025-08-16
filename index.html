@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Website</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 0; padding: 0; }
+    header { background: #ffffff; padding: 5px 10px; display: flex; justify-content: space-between; align-items: center; }
+    nav a { margin: 0 5px; text-decoration: none; color: #000; }
+    .hero { text-align: center; padding: 20px; background: #fafafa; }
+    .section { padding: 20px 10px; border-top: 1px solid #ccc; }
+    .hq { display: flex; justify-content: center; gap: 20px; }
+    .hq div { text-align: center; }
+    .circle { width: 80px; height: 80px; border: 2px solid #000; border-radius: 50%; margin: auto; }
+    .form-container { display: flex; gap: 20px; }
+    form { flex: 1; }
+    input, textarea, select { width: 100%; padding: 6px; margin: 4px 0; }
+    button { padding: 8px 16px; cursor: pointer; }
+    footer { text-align: center; padding: 8px; background: #f4f4f4; margin-top: 20px; }
+    .output { flex: 1; border: 1px solid #000; padding: 8px; }
+  </style>
+</head>
+<body>
+  <!-- Navbar -->
+  <header>
+    <div><strong>My Website</strong></div>
+    <nav>
+      <a href="#">Home</a>
+      <a href="#">Our Profile</a>
+      <a href="#">Portfolio</a>
+      <a href="#">Message Us</a>
+    </nav>
+  </header>
+
+  <!-- Hero -->
+  <section class="hero">
+    <h1>Hi RevoU, Welcome To My Website</h1>
+    <p>Ini adalah website latihan pertama</p>
+    <img src="image/banner.png" alt="Banner" />
+  </section>
+
+  <!-- Headquarters -->
+  <section class="section">
+    <h2>Our Headquarter</h2>
+    <div class="hq">
+      <div><div class="circle"></div><p>Jakarta</p></div>
+      <div><div class="circle"></div><p>Bandung</p></div>
+      <div><div class="circle"></div><p>Surabaya</p></div>
+    </div>
+  </section>
+
+  <!-- Message Us -->
+  <section class="section">
+    <h2>Message Us</h2>
+    <div class="form-container">
+      <form id="messageForm">
+        <label>Nama:</label>
+        <input type="text" id="nama" required>
+        
+        <label>Tanggal Lahir:</label>
+        <input type="date" id="tgl" required>
+        
+        <label>Jenis Kelamin:</label>
+        <input type="radio" name="gender" value="Laki-Laki" required> Laki-Laki
+        <input type="radio" name="gender" value="Perempuan" required> Perempuan
+        
+        <label>Pesan:</label>
+        <textarea id="pesan" required></textarea>
+        
+        <button type="submit">Submit</button>
+      </form>
+
+      <div class="output" id="output">
+        <p><strong>Current time:</strong> - </p>
+        <p><strong>Nama:</strong> - </p>
+        <p><strong>Tanggal Lahir:</strong> - </p>
+        <p><strong>Jenis Kelamin:</strong> - </p>
+        <p><strong>Pesan:</strong> - </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    Created By Dwi
+  </footer>
+
+  <script>
+    const form = document.getElementById("messageForm");
+    const output = document.getElementById("output");
+
+    form.addEventListener("submit", function(e) {
+      e.preventDefault();
+      
+      const nama = document.getElementById("nama").value;
+      const tgl = document.getElementById("tgl").value;
+      const gender = document.querySelector('input[name="gender"]:checked').value;
+      const pesan = document.getElementById("pesan").value;
+      const now = new Date();
+
+      output.innerHTML = `
+        <p><strong>Current time:</strong> ${now}</p>
+        <p><strong>Nama:</strong> ${nama}</p>
+        <p><strong>Tanggal Lahir:</strong> ${tgl}</p>
+        <p><strong>Jenis Kelamin:</strong> ${gender}</p>
+        <p><strong>Pesan:</strong> ${pesan}</p>
+      `;
+    });
+  </script>
+</body>
+</html>
